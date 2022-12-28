@@ -1,0 +1,18 @@
+[
+{
+    "model": "event_registration.registration",
+    "pk": "d262f505-5ba5-42e1-8012-ab0d189f126d",
+    "fields": {
+        "created": "2020-04-11T01:30:27.876Z",
+        "modified": "2020-04-11T01:30:27.876Z",
+        "referenceID": "GVDE8WGEDRJLZNY",
+        "organization": "e8cf688a-c760-4daf-8611-954b95198fd3",
+        "invoice": "2be1b75d-16ed-4265-8468-d05b1ea17ec0",
+        "event": 1,
+        "team": "0a972c84-de56-4a0c-85d5-aa526842799e",
+        "registrationStatus": 0,
+        "entryFee": "999.99",
+        "disclaimer_accepted": 0
+    }
+}
+]

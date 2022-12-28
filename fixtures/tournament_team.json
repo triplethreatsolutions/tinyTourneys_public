@@ -1,0 +1,42 @@
+[
+{
+    "model": "tournaments.team",
+    "pk": "0a972c84-de56-4a0c-85d5-aa526842799e",
+    "fields": {
+        "created": "2020-04-11T01:17:04.385Z",
+        "modified": "2020-04-11T01:17:21.462Z",
+        "name": "Test Team",
+        "event": 1,
+        "division": 1,
+        "head_coach": null,
+        "assistant_coach": null,
+        "team_director": null,
+        "gender": "U",
+        "ageGroup": "Mixed",
+        "pool": 1,
+        "wins": 0,
+        "losses": 0,
+        "place_holder": false
+    }
+},
+    {
+        "model": "tournaments.team",
+        "pk": "0780f26e-20da-4104-92f4-fd0228b29a8c",
+        "fields": {
+            "created": "2020-04-11T01:17:04.385Z",
+            "modified": "2020-04-11T01:17:21.462Z",
+            "name": "Test Team #2",
+            "event": 1,
+            "division": 1,
+            "head_coach": null,
+            "assistant_coach": null,
+            "team_director": null,
+            "gender": "U",
+            "ageGroup": "Mixed",
+            "pool": 1,
+            "wins": 0,
+            "losses": 0,
+            "place_holder": false
+        }
+    }
+]

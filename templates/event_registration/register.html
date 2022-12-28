@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_css %}
+    <link rel="stylesheet" href="{% static 'css/registration_v3.css' %}">
+{% endblock head_css %}
+{% block title %}Registration Details{% endblock title %}
+
+{% block content %}
+    <!-- load context data for scripts -->
+    {{ data|json_script:"data" }}
+
+    <section class="content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="main-container registration">
+                    <div id="event_logo">
+                        {% if event.event_logo %}
+                            <img class="img-responsive" src="{{ static }} {{event.event_logo.url }}" alt="Youth Tournament Logo">
+                        {% else %}
+                            <img class="img-responsive" src="/media/logo-default.png" alt="Youth Tournament Logo">
+                        {% endif %}
+                    </div>
+                    <div id="event-date">
+                        <time>
+                            <span class="day">{{ data.startDate }}</span>
+                        </time>
+                    </div>
+                    <div class="caption text-center">
+                        <h1 class="list-title">
+                            <a href="{{ event.get_absolute_url }}">{{ data.title }}
+                            </a>
+                        </h1>
+                        <p class="desc">{{ data.description | linebreaksbr }} </p>
+                        <p class="desc">{{ data.information | linebreaksbr }} </p>
+                        <p class="cost"><span class="label label-default fa fa-users "> ${{ data.entryFee }}</span></p>
+                    </div>
+                    {% if data.registrationState %}
+                        <form id="regForm" action="post">
+                            {% csrf_token %}
+                            <script src="https://js.stripe.com/v3"></script>
+                            <!-- this will show our spinner -->
+                            <div hidden id="spinner"></div>
+                              <h3 id="registration-heading">Team Registration</h3>
+                              <!-- One "tab" for each step in the form: -->
+                              <div id="team-tab" class="tab">
+                                  <div class="team-add-container">
+                                      <p><input id="team-id-1" class="new-team" placeholder="Team Name..." name="team" required></p>
+                                      <label class="division-label" for="division-select-id-1">Choose Division:</label>
+                                          <select id="division-select-id-1" name="division" class="division-select" required>
+                                              <option value="">--Please choose a division--</option>
+                                          </select>
+                                  </div>
+                              </div>
+                              <div class="tab">
+                                  <p><input id="email-id" placeholder="Email..." name="email" type="email" required autofocus></p>
+                                  <div class="role-choice">
+                                      <input type="radio" id="director-id" name="role" value="Director" checked>
+                                      <label for="director">Director</label>
+                                      <input type="radio" id="head-id" name="role" value="Head Coach">
+                                      <label for="hcoach">Head Coach</label>
+                                      <input type="radio" id="assistant-id" name="role" value="Assistant Coach">
+                                      <label for="acoach">Assistant</label>
+                                  </div>
+                                  <p><input id="fullname-id" placeholder="Full name..." name="fullname"></p>
+                                  <p><input id="phone-id" placeholder="Phone..." name="phone" type="tel"></p>
+                              </div>
+                              <div class="tab">
+                                  <p><input id="address-id" placeholder="Address..." name="address"></p>
+                                  <p><input id="city-id" placeholder="City..." name="city"></p>
+                                  <select name="state" id="state-select" required>
+                                          <option value="">--Select a State--</option>
+                                  </select>
+                                  <p><input id="zip-id" placeholder="Zip..." name="zip" type="number"></p>
+                              </div>
+                              <div class="tab">
+                                  <p><input id="comments-id" type="text" placeholder="Comments..." name="comments"></p>
+                              </div>
+                              {% if data.promoEnabled %}
+                                  <div class="tab">
+                                      <p><input id="promo-id" type="text" placeholder="Promo Code..." name="promocode"></p>
+                                  </div>
+                              {% endif %}
+                              {% if data.disclaimerEnabled %}
+                                <div class="tab">
+                                    <h4>Registering for this event you accept the following disclaimer:</h4>
+                                    <pre id="disclaimer-id" class="disclaimer" type="text" name="disclaimer">{{ data.disclaimer }}</pre>
+                                </div>
+                              {% endif %}
+                              <div class="tab">
+                                  <div class="registration-container">
+                                      <div class="summary-container summary-header">
+                                          <div id="team-listing"></div>
+                                      </div>
+                                      <div class="summary-container">
+                                          <div>
+                                              <h4>Contact Information:</h4>
+                                              <p id="name"></p>
+                                              <p id="email"></p>
+                                              <p id="phone"></p>
+                                              <p id="address"></p>
+                                              <p id="city"></p>
+                                          </div>
+                                          <div>
+                                              <h4>Balance Due:</h4>
+                                              <p>Cost: $<span id="cost"></span></p>
+                                              {% if data.promoEnabled %}
+                                                  <p>Promo: <span id="promo-code"></span></p>
+                                                  <p>Discount: $<span id="discount"></span></p>
+                                              {% endif %}
+                                              <p>Processing: $<span id="fees"></span></p>
+                                              <p><strong>Total Cost: $<span id="total-cost"></span></strong></p>
+                                          </div>
+                                      </div>
+                                      <div class="summary-container">
+                                          <div>
+                                              <h4>Comments:</h4>
+                                              <p id="comments"></p>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="buttons">
+                                  <div class="button-add-container">
+                                      <a id="addBtn" class="btn btn-lg btn-yellow">
+                                          <i class="fa fa-plus" aria-hidden="true"></i> More Teams</a>
+                                  </div>
+                                  <div class="button-progress-container">
+                                      <a id="prevBtn" class="btn btn-lg btn-yellow">Previous</a>
+                                      <a id="nextBtn" class="btn btn-lg btn-yellow">Next</a>
+                                  </div>
+                              </div>
+                              <!-- Circles which indicates the steps of the form: -->
+                              <div style="text-align:center;margin-top:40px;">
+                                  <span class="step"></span>
+                                  <span class="step"></span>
+                                  <span class="step"></span>
+                                  <span class="step"></span>
+                                  <span class="step"></span>
+                                  {% if data.disclaimerEnabled %}
+                                      <span class="step"></span>
+                                  {% endif %}
+                                  {% if data.promoEnabled %}
+                                      <span class="step"></span>
+                                  {% endif %}
+                              </div>
+                        </form>
+                {% else %}
+                    <h3>Registration for this event is closed.</h3>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+        <!-- Custom javascript -->
+    <script src="{% static 'js/registration_base.js' %}"></script>
+{% endblock %}

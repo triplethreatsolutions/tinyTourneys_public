@@ -1,0 +1,81 @@
+[
+{
+    "model": "users.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$36000$GNFcm9x7OqKY$mztsmO9Uu+yPM3jefeBXap9z5T2HhyNySxD9IcCx9rk=",
+        "last_login": "2020-04-28T02:33:35.558Z",
+        "is_superuser": true,
+        "username": "jbowman@tnt5basketball.com",
+        "first_name": "Jason",
+        "last_name": "Bowman",
+        "email": "jbowman@tnt5basketball.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2020-03-22T20:34:15Z",
+        "is_OrgAdmin": true,
+        "groups": [],
+        "user_permissions": [
+            [
+                "can_view_organizations",
+                "users",
+                "customuser"
+            ]
+
+        ]
+    }
+},
+{
+    "model": "users.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$36000$7oxKUt013PsC$VgMHVlDaKNt2cSCCWb05hShlk/7WxbvUsI6UPQzKf28=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "potter@gmail.com",
+        "first_name": "Harry",
+        "last_name": "Potter",
+        "email": "potter@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2020-04-09T18:58:00Z",
+        "is_OrgAdmin": false,
+        "groups": [],
+        "user_permissions": [
+            [
+                "can_view_organizations",
+                "users",
+                "customuser"
+            ],
+                        [
+                "can_edit_organization",
+                "users",
+                "customuser"
+            ]
+
+        ]
+    }
+},
+{
+    "model": "users.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$36000$lvZdJPlqvSom$CM/xTYisjS0PqSp7jvuM1Wx5Pi8HHVAKdWql9gnXF1A=",
+        "last_login": "2020-04-28T02:38:17.597Z",
+        "is_superuser": false,
+        "username": "jason.kara.bowman@gmail.com",
+        "first_name": "Kara",
+        "last_name": "Bowman",
+        "email": "jason.kara.bowman@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2020-04-28T02:19:25Z",
+        "is_OrgAdmin": true,
+        "groups": [],
+        "user_permissions": [
+            [
+                "can_view_organizations",
+                "users",
+                "customuser"
+            ]
+        ]
+    }
+}
+]

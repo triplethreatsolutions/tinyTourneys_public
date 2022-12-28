@@ -1,0 +1,22 @@
+[
+{
+    "model": "tournaments.pool",
+    "pk": 1,
+    "fields": {
+        "created": "2021-04-11T01:11:29.902Z",
+        "modified": "2021-04-11T01:11:29.918Z",
+        "division": 1,
+        "name": "Pool A"
+    }
+},
+{
+    "model": "tournaments.pool",
+    "pk": 2,
+    "fields": {
+        "created": "2021-04-11T01:11:29.902Z",
+        "modified": "2021-04-11T01:11:29.918Z",
+        "division": 1,
+        "name": "Pool B"
+    }
+}
+]

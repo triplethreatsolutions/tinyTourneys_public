@@ -1,0 +1,21 @@
+[
+{
+    "model": "tournaments.staff",
+    "pk": "ee790dd8-044d-400c-8b96-23abb63cdfb0",
+    "fields": {
+        "created": "2020-04-11T01:17:04.385Z",
+        "modified": "2020-04-11T01:17:21.462Z",
+        "staff_type": 0,
+        "first_name": "Head",
+        "last_name": "Coach",
+        "email": "headcoach@mail.com",
+        "primary_phone": "123-456-7890",
+        "secondary_phone": "123-456-7890",
+        "address_line1": "123 Street",
+        "address_line2": "PO Box 123",
+        "address_city": "City",
+        "address_state": "IA",
+        "address_zip": "12345"
+    }
+}
+]

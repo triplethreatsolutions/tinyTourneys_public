@@ -1,0 +1,61 @@
+[
+{
+    "model": "subscribers.organization",
+    "pk": "66c5a83e-ac07-4a85-8269-5dd4f4808056",
+    "fields": {
+        "created": "2020-04-11T02:50:33.099Z",
+        "modified": "2020-04-11T02:50:33.099Z",
+        "referenceID": "ZLJ031Q5LNR7YO4",
+        "name": "jason_organization",
+        "accountType": 1,
+        "activationCode": 0,
+        "admin": [
+            "jbowman@tnt5basketball.com"
+        ],
+        "primaryPhone": "123-456-7890",
+        "secondaryPhone": "098-765-4321",
+        "AddressLine1": "123 Street",
+        "AddressLine2": "PO Box 123",
+        "AddressCity": "City",
+        "AddressState": "IA",
+        "AddressZIP": "12345",
+        "stripeID": "123456789",
+        "directors": [
+            [
+                "potter@gmail.com"
+            ],
+            [
+                "jason.kara.bowman@gmail.com"
+            ]
+        ]
+    }
+},
+{
+    "model": "subscribers.organization",
+    "pk": "e8cf688a-c760-4daf-8611-954b95198fd3",
+    "fields": {
+        "created": "2020-04-09T18:59:57.832Z",
+        "modified": "2020-04-09T18:59:57.832Z",
+        "referenceID": "7VYL67MLR87PRQZ",
+        "name": "test_organization",
+        "accountType": 1,
+        "activationCode": 819330,
+        "admin": [
+            "potter@gmail.com"
+        ],
+        "primaryPhone": "123-456-7890",
+        "secondaryPhone": "098-765-4321",
+        "AddressLine1": "123 Street",
+        "AddressLine2": "PO Box 123",
+        "AddressCity": "city",
+        "AddressState": "IA",
+        "AddressZIP": "12345",
+        "stripeID": "123456789",
+        "directors": [
+            [
+                "potter@gmail.com"
+            ]
+        ]
+    }
+}
+]

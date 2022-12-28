@@ -1,0 +1,22 @@
+[
+{
+    "model": "event_registration.configuration",
+    "pk": 1,
+    "fields": {
+        "created": "2020-04-11T01:04:24.342Z",
+        "modified": "2020-04-11T01:04:24.342Z",
+        "registrationState": 1,
+        "entryFee": "999.99",
+        "start_date": "2021-05-20",
+        "end_date": "2021-05-20",
+        "info": "Test registration info",
+        "disclaimerEnabled": true,
+        "disclaimer": "This is tournament disclaimer",
+        "questionsEnabled": true,
+        "numberOfQuestions": 10,
+        "promoEnabled": true,
+        "promoCode": "123promo",
+        "promoValue": "999.99"
+    }
+}
+]

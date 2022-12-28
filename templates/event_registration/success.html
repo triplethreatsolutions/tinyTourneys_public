@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_css %}
+    <link rel="stylesheet" href="{% static 'css/registration_v3.css' %}">
+{% endblock head_css %}
+
+{% block title %}Registration Success{% endblock title %}
+
+{% block content %}
+    <section class="content-section text-center">
+            <div id="invoice-POS" class="main-container">
+                <section id="top">
+                  <div class="logo"></div>
+                  <div class="info">
+                      <h2 id="event-title"></h2>
+                      <p id="invoice_po"></p>
+                      {% now "F d, Y" as todays_date %}
+                      {% now "h:i A" as todays_time %}
+                      <p>Registered: {{ todays_date }} {{ todays_time }}</p>
+                  </div><!--End Info-->
+                </section><!--End InvoiceTop-->
+
+                <div id="mid">
+                    <div hidden id="spinner"></div>
+                  <div class="info">
+                    <h2>Contact Info</h2>
+                      <p id="address"></p>
+                      <p id="email"></p>
+                      <p id="phone"></p>
+                  </div>
+                </div><!--End Invoice Mid-->
+                <div id="table">
+                    <table class="headings">
+                        <tr class="tabletitle">
+                            <td class="item"><h2>Teams</h2></td>
+                            <td class="Rate"><h2>Entry Fee</h2></td>
+                        </tr>
+                        <tbody id="team-list"></tbody>
+                        <tr class="tabletitle">
+                            <td><h3 class="feetext">Fees:</h3></td>
+                            <td class="payment"><h3 id="fees"></h3></td>
+                        </tr>
+
+                        <tr class="tabletitle">
+                            <td class="feetext"><h3 class="feetext">Total: </h3></td>
+                            <td class="payment"><h3 id="payment"></h3></td>
+                        </tr>
+
+                    </table>
+                </div><!--End Table-->
+
+                <div id="legalcopy">
+                    <p class="legal"><strong>Thank you for attending our event! You should also receive a confirmation
+                        receipt via email as well.</strong></p>
+                </div>
+            </div>
+    </section>
+{%  endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        window.addEventListener('load', (event) => {
+              const spinner = document.getElementById("spinner");
+              let urlParams = new URLSearchParams(window.location.search);
+              let sessionId = urlParams.get('session_id');
+              let event_slug = urlParams.get('event');
+              const formatter = new Intl.NumberFormat('en-US', {
+                  style: 'currency',
+                  currency: 'USD',
+                  minimumFractionDigits: 2
+                })
+           spinner.removeAttribute('hidden');
+           fetchSessionData(sessionId, event_slug, formatter)
+        });
+
+        function fetchSessionData(sessionId, event_slug, formatter){
+           if (sessionId) {
+                fetch('/registration/checkout-session/?session_id=' + sessionId + '&event=' + event_slug)
+                  .then(function (result) {
+                    return result.json();
+                  })
+                  .then(function (session) {
+                     try {
+                        spinner.setAttribute('hidden', '');
+                        displayRegistrationComplete(session, formatter);
+                    } catch (e) {
+                      console.error(e);
+                    }
+                  })
+                  .catch(function (err) {
+                     console.log('Error when fetching Checkout session', err);
+                  });
+              }
+        }
+
+      function displayRegistrationComplete(s, formatter){
+         if(s["session_id"]["payment_status"] === "paid")
+         {
+            // turn cost string into floating point number that divides out the cents for formatting
+            let payment = parseFloat(s["session_id"]["amount_total"]) / 100
+            let fees = parseFloat(s["invoice_fees"])
+
+            document.getElementById("event-title").textContent = s["event_title"];
+            document.getElementById("invoice_po").textContent = "PO# " + s["session_id"]["metadata"]["invoice_po"];
+            document.getElementById("address").textContent = s["session_id"]["metadata"]["address"] + " "
+            + s["session_id"]["metadata"]["city"] + ", " + s["session_id"]["metadata"]["state"] + " " + s["session_id"]["metadata"]["zip"] ;
+            document.getElementById("email").textContent = "Email : " + s["session_id"]["metadata"]["email"];
+            document.getElementById("phone").textContent = "Phone : " + s["session_id"]["metadata"]["phone"];
+
+
+            // Create the line items for the teams that successfully registered
+            let teams = s["teams"]
+            let list = document.getElementById("team-list")
+            for(const index in teams) {
+               if (teams.hasOwnProperty(index)) {
+                  let row = document.createElement('tr')
+                  row.className = 'service'
+                  row.innerHTML =
+                     `<tr class="service">
+                        <td class="tableitem">
+                            <p class="itemtext">${teams[index]["name"]}</p>
+                            <p class="itemtext itemsubtext">${teams[index]["division"]} Division</p>
+                        </td>
+                        <td class="tableitem"><p class="itemtext">$${teams[index]["entry_fee"]}</p></td>
+                      </tr>`
+                  list.appendChild(row)
+               }
+            }
+
+            document.getElementById("fees").textContent = formatter.format(fees)
+            document.getElementById("payment").textContent = formatter.format(payment)
+         }
+         else
+         {
+            document.getElementById("invoice_po").textContent = "Error processing checkout session ~ contact tinyTourneys.com";
+            throw 'Error processing checkout session';
+         }
+      }
+    </script>
+{% endblock %}
+
+

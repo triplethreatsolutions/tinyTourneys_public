@@ -1,0 +1,47 @@
+[
+{
+    "model": "tournaments.court",
+    "pk": 1,
+    "fields": {
+        "location": 1,
+        "name": "GameOn #1",
+        "court_number": 1
+    }
+},
+{
+    "model": "tournaments.court",
+    "pk": 2,
+    "fields": {
+        "location": 1,
+        "name": "GameOn #2",
+        "court_number": 2
+    }
+},
+{
+    "model": "tournaments.court",
+    "pk": 3,
+    "fields": {
+        "location": 1,
+        "name": "GameOn #3",
+        "court_number": 3
+    }
+},
+{
+    "model": "tournaments.court",
+    "pk": 4,
+    "fields": {
+        "location": 1,
+        "name": "GameOn #4",
+        "court_number": 4
+    }
+},
+{
+    "model": "tournaments.court",
+    "pk": 5,
+    "fields": {
+        "location": 1,
+        "name": "GameOn #5",
+        "court_number": 5
+    }
+}
+]

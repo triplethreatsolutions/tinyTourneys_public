@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About{% endblock title %}
+
+{% block content %}
+        <!-- About Section -->
+<section class="content-section text-center">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div class="main-container">
+                <h2>About</h2>
+                        <p class="about-header">
+                            tinyTourneys.com is a free and easy basketball tournament solution designed to provide
+                            a positive experience for directors, teams and fans.
+                        </p>
+                        <p class="about-header">
+                            Our mobile platform provides a stream-lined set of tournament features ideal for youth programs
+                            and schools around the country to effectively manage and run their events.
+                        </p>
+            <div class="">
+                <div class="about-img">
+                    <!--img class="img-responsive img-thumbnail " src="{% static 'images/Jason_web.jpg' %}" alt="Jason Bowman" width="150" height="200"-->
+                </div>
+                <div>
+                    <p class="about-me">
+                        Jason Bowman
+                    </p>
+                    <p class="about-me">
+                        Founder / Developer
+                    </p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

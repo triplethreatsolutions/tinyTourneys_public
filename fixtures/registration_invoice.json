@@ -1,0 +1,19 @@
+[
+{
+    "model": "event_registration.invoice",
+    "pk": "2be1b75d-16ed-4265-8468-d05b1ea17ec0",
+    "fields": {
+        "created": "2020-04-11T01:06:31.601Z",
+        "modified": "2020-04-11T01:06:31.601Z",
+        "purchaseOrderID": "TT20200411574UYG530",
+        "referenceID": "MN2WMJ9WDPJ4MQD",
+        "billingInfo": null,
+        "invoiceStatus": 1,
+        "amountDue": "999.99",
+        "amountPaid": "999.99",
+        "processingFee": "99.00",
+        "taxes": "99.00",
+        "paymentMethod": 0
+    }
+}
+]

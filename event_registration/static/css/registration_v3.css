@@ -1,0 +1,403 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1;
+}
+
+h1 {
+  text-align: center;
+}
+
+input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-weight: bold;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Mark input boxes that gets an error on validation: */
+select.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+#event_logo {
+  display: flex;
+  justify-content: center;
+}
+
+#event_logo > img {
+  max-height: 90px;
+  max-width: 200px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#event-date {
+  display: flex;
+  justify-content: center;
+}
+
+#event-date > time {
+    display: inline-block;
+    width: 96%;
+    color: yellow;
+    background-color: transparent;
+    padding: 5px;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    border: 1px whitesmoke;
+    border-top-style: groove;
+    border-bottom-style: groove;
+    border-radius: 20px;
+}
+
+#event-date > time > .day {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18pt;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.team-separator{
+    margin: 10px 10px 20px 10px;
+    border-bottom: 5px solid yellow;
+}
+
+.team-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.btn-small-text {
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.division-label {
+  padding: 10px;
+  color: white;
+  font-size: 17px;
+}
+
+.division-select {
+    font-size: 17px;
+    font-weight: bold;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin-bottom: 20px;
+}
+
+#state-select {
+    font-size: 17px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 45px;
+}
+
+#promo-id{
+    width: 50%;
+}
+
+input[type=radio]{
+  width: 30px;
+}
+
+.role-choice {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5px;
+
+}
+
+.role-choice > label{
+    color: white;
+    font-size: 14px;
+    font-family: sans-serif;
+}
+
+.summary-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.summary-container > div > p {
+    color: whitesmoke;
+}
+
+.summary-header {
+    color: whitesmoke;
+    border-bottom: 1px solid whitesmoke;
+}
+.summary-header > div > h3 {
+    color: whitesmoke;
+    margin: 10px 0 5px;
+}
+
+.registration-container {
+    display: flex;
+    flex-direction: column;
+    background: black;
+    border-style: solid;
+    border-color: whitesmoke;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+#team-listing ul {
+    font-size: medium;
+    font-weight: bold;
+    list-style-type: none;
+    padding: 0 0 0 25px;
+    text-align: start;
+}
+
+#team-listing li {
+    margin-top: 5px;
+}
+
+#team-listing span {
+    font-size: small;
+}
+
+
+.success-details{
+    color: whitesmoke;
+    font-size: 18px;
+}
+
+.buttons {
+    display:flex;
+    justify-content: space-between;
+}
+
+.button-add-container{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.button-progress-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+button {
+    margin: 3px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#addBtn:hover {
+    color: lightgrey;
+}
+
+#prevBtn:hover {
+    color: lightgrey;
+}
+
+#nextBtn:hover {
+    color: lightgrey;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.8;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: yellow;
+}
+
+
+/* Spinner css */
+#spinner:not([hidden]) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#spinner::after {
+  content: "";
+  width: 80px;
+  height: 80px;
+  border: 2px solid #f3f3f3;
+  border-top: 5px solid yellow;
+  border-radius: 100%;
+  will-change: transform;
+  animation: spin 1s infinite linear
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Receipt Styling for a successful registration */
+#invoice-POS {
+    box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
+    padding: 2mm;
+    margin: 0 auto;
+    background: rgb(238,238,238);
+    background: linear-gradient(0deg, rgba(238,238,238,.90) 50%, rgba(105,112,9,0.9515581232492998) 100%);
+}
+
+#invoice-POS h2 {
+    margin-top: 10px;
+    color: black;
+}
+
+#invoice-POS h3 {
+    color: black;
+}
+
+#invoice-POS ~ p {
+    font-size: 1em;
+    font-weight: bold;
+    color: #343434;
+    line-height: 1.2em;
+
+}
+
+#top, #mid, #bot { /* Targets all id with 'col-' */
+    border-bottom: 1px solid #EEE;
+}
+
+#top {
+    min-height: 100px;
+}
+
+#mid {
+    min-height: 80px;
+}
+
+#bot {
+    min-height: 50px;
+}
+
+#top .logo {
+    margin: auto;
+    height: 60px;
+    width: 60px;
+    background-image: url(../images/Ball_basketball_game_sports_ball.png);
+    background-size: 60px 60px;
+}
+
+.info {
+    display: block;
+    margin-left: 0;
+}
+
+.title {
+    float: right;
+}
+
+.title p {
+    text-align: right;
+}
+
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+}
+
+table td .feetext {
+    text-align: right;
+}
+
+.headings td:nth-child(1){
+    width: 60%;
+}
+
+.headings td:nth-child(2){
+    width: 40%;
+}
+
+.tabletitle {
+    /*font-size: .5em;*/
+    background: #EEE;
+}
+
+.itemtext {
+    margin: 15px 0 5px 0;
+    font-weight: bold;
+}
+
+.itemsubtext{
+    font-size: 12px;
+    font-weight: normal;
+    margin: 0 0 15px 0;
+}
+
+.service {
+    border-bottom: 1px solid #EEE;
+}
+
+#legalcopy {
+    margin-top: 5mm;
+}
+
+@media (max-width: 469px) {
+
+    #invoice-POS h2 {
+        font-size: 1.25em;
+    }
+
+    #invoice-POS h3 {
+        margin-top: 10px;
+        font-size: 1.25em;
+    }
+
+    .itemtext {
+        margin: 10px 0 5px 0;
+    }
+
+    .itemsubtext{
+        margin: 0 0 10px 0;
+    }
+}
+
+

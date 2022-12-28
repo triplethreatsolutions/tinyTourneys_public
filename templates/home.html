@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+
+    <section class="content-section">
+        <div class="marketing-wrapper">
+            <article class="actions">
+                <div class="card">
+                    <img class="img-circle" src="{%  static  'images/bracketlogo.png' %}" alt="Unlimited Feature">
+                    <h2>Find Your Tournament!</h2>
+                    <p>Search by event or location.</p>
+                     <form class="" action="{%  url 'tournaments:search_results' %}" method="get">
+                        <div class="input-group">
+                            <input name="q" type="text" class="form-control search-input"
+                                   placeholder="Find your tournament..." aria-label="Search">
+                            <span class="input-group-btn">
+                                <input class="btn btn-yellow" type="submit" value="Search" />
+                            </span>
+                        </div>
+                     </form>
+                    <a href="{% url 'tournaments:event_list' %}">View All Tournaments
+                        <i class="fa fa-external-link yellow" aria-hidden="true"></i>
+                    </a>
+                </div><!-- card -->
+                <div class="card">
+                    <img class="img-circle" src="{%  static  'images/emaillogo.png' %}" alt="Unlimited Feature">
+                    <h2>Run Tournaments?</h2>
+                    <p>Free. Easy. Unlimited.</p>
+                    <p>Designed for organizations and directors looking to simplify the art of scheduling tournaments.</p>
+                     <form class="" action="{%  url 'subscribers:interested_email' %}" method="post">
+                         {% csrf_token %}
+                        <div class="input-group">
+                            <input name="email" type="email" class="form-control email-input"
+                                   placeholder="Email Address..." aria-label="Enter">
+                            <span class="input-group-btn">
+                                <input class="btn btn-yellow" type="submit" value="I'm Interested!" />
+                            </span>
+                        </div>
+                     </form>
+                </div><!-- card -->
+            </article>
+            <!--article class="features">
+                    <div class="card">
+                      <img class="img-circle" src="{%  static  'images/unlimited-feature.jpg' %}" alt="Unlimited Feature" width="140" height="140">
+                      <h2>Unlimited</h2>
+                        <p>Unlimited Teams.</p>
+                        <p>Unlimited Leagues.</p>
+                        <p>Unlimited Tournaments.</p>
+                    </div>
+
+                    <div class="card">
+                      <img class="img-circle" src="{%  static  'images/instant-feature.jpg' %}" alt="Instant Feature" width="140" height="140">
+                      <h2>Instant Results</h2>
+                        <p>Our Cutting Edge Administrative Dashboard Allows You to Post Scores from Your Mobile Device.
+                            Deliver the WOW factor to Families, Fans, Coaches, and Teams!</p>
+                    </div>
+
+                    <div class="card">
+                      <img class="img-circle" src="{%  static  'images/low-cost-feature.jpg' %}" alt="Low-Cost Feature" width="140" height="140">
+                      <h2>Low-Cost</h2>
+                      <p>We Make it Easy and Affordable for Events Across the Country to Schedule and Run Tournaments Online.</p>
+                    </div>
+            </article-->
+        </div>
+    </section>
+
+{% endblock %}

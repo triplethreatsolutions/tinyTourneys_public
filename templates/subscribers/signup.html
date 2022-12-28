@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% include crispy_tags %}
+{% load crispy_forms_tags %}
+
+{% block head_css %}
+    <!-- Custom CSS -->
+{% endblock head_css %}
+
+{% block title %}Signup{% endblock title %}
+
+{% block content %}
+<section class="content-section text-center">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div class="main-container">
+                <form id="user-reg-form" action="." method="post">
+                    {% csrf_token %}
+                    {# Username & Password Section #}
+                    <h3>Sign-Up. It's Free!</h3>
+                    <h5 class="main-label">Create Your Account</h5>
+                        {% csrf_token %}
+                        {% crispy form form.helper%}
+                </form>
+                {# Credit Card Section #}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

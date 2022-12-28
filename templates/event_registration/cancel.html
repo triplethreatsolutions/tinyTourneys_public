@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Registration Cancelled{% endblock title %}
+
+{% block content %}
+    <section id="about" class="content-section text-center">
+        <div class="main-container">
+            <p class="text-white">Your event registration has been cancelled.</p>
+        </div>
+    </section>
+{%  endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        window.addEventListener('load', (event) => {
+              let urlParams = new URLSearchParams(window.location.search);
+              let sessionId = urlParams.get('session_id');
+              let event_slug = urlParams.get('event');
+           fetchSessionData(sessionId, event_slug)
+        });
+
+        function fetchSessionData(sessionId, event_slug){
+           if (sessionId) {
+                fetch('/registration/cancel-checkout/?session_id=' + sessionId + '&event=' + event_slug)
+                  .then(function (result) {
+                    return result.json();
+                  })
+                  .then(function (session) {
+                     try {
+                        console.log(session)
+                    } catch (e) {
+                      console.error(e);
+                    }
+                  })
+                  .catch(function (err) {
+                     console.log('Error when fetching session data', err);
+                  });
+              }
+        }
+    </script>
+{% endblock %}
+
+

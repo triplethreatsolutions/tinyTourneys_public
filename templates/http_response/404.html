@@ -1,0 +1,19 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Not Found{% endblock title %}
+
+{% block content %}
+        <!-- 404 Not Found -->
+<section class="content-section text-center">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div class="main-container">
+                <h3>This event registration was not setup yet. Please contact event director for details.</h3>
+                <p class="text-white"><strong>Director: {{ user.get_full_name }} @ {{ user.email }}</strong></p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

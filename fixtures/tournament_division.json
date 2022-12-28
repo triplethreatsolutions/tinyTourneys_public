@@ -1,0 +1,28 @@
+[
+{
+    "model": "tournaments.division",
+    "pk": 1,
+    "fields": {
+        "created": "2021-04-11T01:11:29.850Z",
+        "modified": "2021-04-11T01:11:29.869Z",
+        "event": 1,
+        "name": "4th Grade",
+        "bracket_enabled": false,
+        "bracket_image": "",
+        "published_date": "2020-11-15T02:23:53.688Z"
+    }
+},
+{
+    "model": "tournaments.division",
+    "pk": 2,
+    "fields": {
+        "created": "2021-04-11T01:11:29.850Z",
+        "modified": "2021-04-11T01:11:29.869Z",
+        "event": 1,
+        "name": "5th Grade",
+        "bracket_enabled": false,
+        "bracket_image": "",
+        "published_date": "2020-10-31T21:58:59.661Z"
+    }
+}
+]
